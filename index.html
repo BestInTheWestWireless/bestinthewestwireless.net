@@ -1,10 +1,606 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Best In The West Wireless</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Best In The West Wireless | Dayton, Ohio</title>
+  <meta name="description" content="Best In The West Wireless in Dayton, Ohio. Sell, buy, trade, and repair cell phones. Also a perfume store. 3010 W Third St, Dayton. (937) 640-1004." />
+
+  <!-- Cairo font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#070707;
+      --bg2:#0d0d0d;
+      --card:#101010;
+      --text:#f4f4f4;
+      --muted:#b7b7b7;
+      --red:#ff0000;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Cairo", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(900px 500px at 18% 8%, rgba(255,0,0,.18), transparent 55%),
+        radial-gradient(700px 500px at 95% 20%, rgba(255,0,0,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), #000);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(var(--max), 92vw); margin-inline:auto}
+    .pill{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.5rem .85rem;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      color:var(--muted);
+      font-weight:600;
+      font-size:.95rem;
+    }
+    .dot{width:.55rem; height:.55rem; border-radius:999px; background:var(--red); box-shadow:0 0 18px rgba(255,0,0,.7)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+      padding:.95rem 1.05rem;
+      border-radius:14px;
+      font-weight:800;
+      letter-spacing:.2px;
+      border:1px solid var(--border);
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{
+      background:linear-gradient(180deg, rgba(255,0,0,1), rgba(255,0,0,.82));
+      border-color:rgba(255,0,0,.35);
+      color:#fff;
+      box-shadow:0 18px 40px rgba(255,0,0,.20);
+    }
+    .btn.ghost{
+      background:rgba(255,255,255,.04);
+      color:#fff;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.primary:hover{background:linear-gradient(180deg, rgba(255,0,0,1), rgba(255,0,0,.90))}
+    .btn.ghost:hover{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.16)}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background:rgba(0,0,0,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:.9rem 0;
+      gap:1rem;
+    }
+    .brand{
+      display:flex; align-items:center; gap:.75rem;
+      min-width: 220px;
+    }
+    .brand img{
+      width:44px; height:44px; object-fit:contain;
+      border-radius:12px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      padding:.25rem;
+    }
+    .brand-title{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand-title strong{font-size:1.05rem; letter-spacing:.2px}
+    .brand-title span{font-size:.9rem; color:var(--muted); font-weight:700}
+    .nav-links{
+      display:flex; align-items:center; gap:1rem;
+    }
+    .nav-links a{
+      color:var(--muted);
+      font-weight:800;
+      padding:.55rem .7rem;
+      border-radius:12px;
+      transition:background .15s ease, color .15s ease;
+    }
+    .nav-links a:hover{background:rgba(255,255,255,.05); color:#fff}
+    .nav-cta{display:flex; align-items:center; gap:.75rem}
+    .mobile-menu-btn{
+      display:none;
+      width:44px; height:44px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+    }
+    .mobile-drawer{
+      display:none;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding: .75rem 0 1rem;
+    }
+    .mobile-drawer a{
+      display:block;
+      padding:.85rem .9rem;
+      border-radius:14px;
+      color:#fff;
+      font-weight:800;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      margin:.55rem 0;
+    }
+
+    header.hero{
+      padding: clamp(2.2rem, 6vw, 4.2rem) 0 2.2rem;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: clamp(1.25rem, 3vw, 2.4rem);
+      align-items:stretch;
+    }
+    .hero-card{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(500px 220px at 20% 10%, rgba(255,0,0,.28), transparent 60%);
+      pointer-events:none;
+      opacity:.8;
+    }
+    .hero-card-inner{
+      position:relative;
+      padding: clamp(1.3rem, 3vw, 2.2rem);
+      display:flex;
+      flex-direction:column;
+      gap:1.1rem;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(2.05rem, 4.4vw, 3.35rem);
+      line-height:1.08;
+      letter-spacing:.2px;
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-weight:600;
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      max-width: 62ch;
+    }
+    .hero-actions{
+      display:flex; flex-wrap:wrap;
+      gap:.8rem;
+      margin-top:.25rem;
+    }
+    .badges{
+      display:flex; flex-wrap:wrap; gap:.6rem;
+      margin-top:.2rem;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:.9rem;
+    }
+    .stat{
+      padding:1rem;
+      border-radius:16px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .stat strong{display:block; font-size:1.2rem}
+    .stat span{display:block; color:var(--muted); font-weight:700; margin-top:.2rem}
+    .side-card{
+      padding:1.2rem;
+      display:flex;
+      flex-direction:column;
+      gap:.9rem;
+      background: linear-gradient(180deg, rgba(255,0,0,.10), rgba(255,255,255,.02));
+      border:1px solid rgba(255,0,0,.20);
+    }
+    .side-card h2{
+      margin:0;
+      font-size:1.2rem;
+      letter-spacing:.15px;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 28px 1fr;
+      gap:.75rem;
+      align-items:start;
+      padding:.85rem;
+      border-radius:16px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .icon{
+      width:28px; height:28px;
+      border-radius:10px;
+      display:grid; place-items:center;
+      background:rgba(255,0,0,.12);
+      border:1px solid rgba(255,0,0,.22);
+      color:#fff;
+      font-weight:900;
+    }
+    .kv p{margin:0; color:var(--muted); font-weight:700}
+    .kv strong{display:block; color:#fff; font-weight:900}
+
+    section{
+      padding: clamp(2rem, 5vw, 3.2rem) 0;
+    }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:1rem;
+      margin-bottom:1.25rem;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      letter-spacing:.15px;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-weight:700;
+      max-width: 60ch;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      overflow:hidden;
+    }
+    .card-inner{padding:1.25rem}
+    .card h3{
+      margin:0 0 .4rem 0;
+      font-size:1.15rem;
+      letter-spacing:.15px;
+    }
+    .card p{margin:0; color:var(--muted); font-weight:700}
+    .card-top{
+      height:4px;
+      background: linear-gradient(90deg, rgba(255,0,0,1), rgba(255,0,0,.20));
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items:stretch;
+    }
+
+    .hours{
+      width:100%;
+      border-collapse:collapse;
+      overflow:hidden;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(0,0,0,.25);
+    }
+    .hours th, .hours td{
+      padding:.85rem .9rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      text-align:left;
+      font-weight:800;
+    }
+    .hours th{color:#fff; background:rgba(255,255,255,.04)}
+    .hours td{color:var(--muted)}
+    .hours tr:last-child td{border-bottom:none}
+    .closed{color:rgba(255,0,0,.95) !important}
+
+    .map{
+      width:100%;
+      height: 340px;
+      border:0;
+      border-radius:16px;
+      overflow:hidden;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    footer{
+      padding: 2.2rem 0;
+      border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);
+      background: rgba(0,0,0,.45);
+    }
+    .footer-grid{
+      display:flex; flex-wrap:wrap;
+      gap:1rem;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .tiny{font-size:.95rem; font-weight:700}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{grid-template-columns: 1fr}
+      .stats{grid-template-columns: 1fr 1fr}
+      .grid-3{grid-template-columns: 1fr}
+      .split{grid-template-columns: 1fr}
+      .nav-links{display:none}
+      .mobile-menu-btn{display:inline-grid; place-items:center}
+      .mobile-drawer{display:none}
+    }
+    @media (max-width: 520px){
+      .brand{min-width:auto}
+      .stats{grid-template-columns: 1fr}
+      .btn{width:100%}
+      .hero-actions{flex-direction:column}
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Best In The West Wireless</h1>
-  <p>Website coming soon.</p>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <img src="https://chilliswingsandrings.com/wp-content/uploads/2025/12/Red-and-Black-Simple-Mobile-Repair-Shop-Logo-1.png" alt="Best In The West Wireless logo">
+        <div class="brand-title">
+          <strong>Best In The West Wireless</strong>
+          <span>Dayton, Ohio</span>
+        </div>
+      </a>
+
+      <div class="nav-links" role="navigation" aria-label="Site">
+        <a href="#services">Services</a>
+        <a href="#hours">Hours</a>
+        <a href="#location">Location</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="nav-cta">
+        <a class="btn ghost" href="tel:+19376401004" aria-label="Call Best In The West Wireless">(937) 640-1004</a>
+        <button class="mobile-menu-btn" type="button" aria-label="Open menu" id="menuBtn">☰</button>
+      </div>
+    </div>
+
+    <div class="container mobile-drawer" id="mobileDrawer" aria-label="Mobile menu">
+      <a href="#services">Services</a>
+      <a href="#hours">Hours</a>
+      <a href="#location">Location</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <span class="pill"><span class="dot"></span> Cell Phones + Repairs + Perfumes</span>
+          <h1>Sell, Buy, Trade, and Repair</h1>
+          <p class="sub">
+            Best In The West Wireless is your local cell phone store in Dayton, Ohio.
+            We handle device sales, trade-ins, and repairs, plus a curated selection of perfumes.
+          </p>
+
+          <div class="badges">
+            <span class="pill">Fast, local service</span>
+            <span class="pill">Fair trade-in offers</span>
+            <span class="pill">Professional repairs</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="tel:+19376401004">Call Now</a>
+            <a class="btn ghost" href="#location">Get Directions</a>
+          </div>
+
+          <div class="stats" aria-label="Highlights">
+            <div class="stat">
+              <strong>Phones</strong>
+              <span>Sell, buy, and trade</span>
+            </div>
+            <div class="stat">
+              <strong>Repairs</strong>
+              <span>Trusted device service</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card side-card" aria-label="Store info">
+        <h2>Store Details</h2>
+
+        <div class="kv">
+          <div class="icon">📍</div>
+          <div>
+            <strong>Address</strong>
+            <p>3010 W Third St, Dayton, OH</p>
+          </div>
+        </div>
+
+        <div class="kv">
+          <div class="icon">📞</div>
+          <div>
+            <strong>Phone</strong>
+            <p><a href="tel:+19376401004">(937) 640-1004</a></p>
+          </div>
+        </div>
+
+        <div class="kv">
+          <div class="icon">🕘</div>
+          <div>
+            <strong>Hours</strong>
+            <p>Tue to Sat 9:30 AM to 7 PM<br>Mon 9:30 AM to 7 PM<br>Sun Closed</p>
+          </div>
+        </div>
+
+        <a class="btn primary" href="#contact">Request Info</a>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>What We Do</h2>
+            <p>Everything you need for phones plus perfumes, all in one spot.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-top"></div>
+            <div class="card-inner">
+              <h3>Sell, Buy, Trade</h3>
+              <p>Upgrade, switch, or trade in your device with straightforward offers.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top"></div>
+            <div class="card-inner">
+              <h3>Phone Repairs</h3>
+              <p>Bring your device in and we will help diagnose and repair common issues.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-top"></div>
+            <div class="card-inner">
+              <h3>Perfume Store</h3>
+              <p>Shop a selection of perfumes while you browse or wait for service.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hours">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Hours</h2>
+            <p>Plan your visit.</p>
+          </div>
+        </div>
+
+        <div class="split">
+          <div class="card">
+            <div class="card-top"></div>
+            <div class="card-inner">
+              <table class="hours" aria-label="Store hours">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Hours</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Monday</td><td>9:30 AM to 7:00 PM</td></tr>
+                  <tr><td>Tuesday</td><td>9:30 AM to 7:00 PM</td></tr>
+                  <tr><td>Wednesday</td><td>9:30 AM to 7:00 PM</td></tr>
+                  <tr><td>Thursday</td><td>9:30 AM to 7:00 PM</td></tr>
+                  <tr><td>Friday</td><td>9:30 AM to 7:00 PM</td></tr>
+                  <tr><td>Saturday</td><td>9:30 AM to 7:00 PM</td></tr>
+                  <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card" id="contact">
+            <div class="card-top"></div>
+            <div class="card-inner">
+              <h3 style="margin-top:0">Contact</h3>
+              <p style="margin:.25rem 0 1rem; color:var(--muted); font-weight:700;">
+                Call for availability, trade-in questions, or repair info.
+              </p>
+
+              <div style="display:grid; gap:.75rem;">
+                <a class="btn primary" href="tel:+19376401004">Call (937) 640-1004</a>
+                <a class="btn ghost" href="https://www.google.com/maps?q=3010+W+Third+St,+Dayton,+OH+45417" target="_blank" rel="noopener">
+                  Open in Google Maps
+                </a>
+              </div>
+
+              <div style="margin-top:1rem; padding:1rem; border-radius:16px; background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.08);">
+                <strong style="display:block; font-weight:900;">Address</strong>
+                <span style="color:var(--muted); font-weight:700;">3010 W Third St, Dayton, OH 45417, USA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Location</h2>
+            <p>3010 W Third St, Dayton, OH 45417</p>
+          </div>
+        </div>
+
+        <iframe
+          class="map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=3010%20W%20Third%20St%2C%20Dayton%2C%20OH%2045417&output=embed"
+          title="Map to Best In The West Wireless">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="tiny">
+        <strong style="color:#fff;">Best In The West Wireless</strong><br>
+        3010 W Third St, Dayton, OH 45417 | <a href="tel:+19376401004">(937) 640-1004</a>
+      </div>
+      <div class="tiny">
+        <a href="/privacy" style="color:#fff; font-weight:900;">Privacy</a>
+        <span style="opacity:.6"> | </span>
+        <span>&copy; <span id="year"></span> Best In The West Wireless LLC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const btn = document.getElementById('menuBtn');
+    const drawer = document.getElementById('mobileDrawer');
+    btn?.addEventListener('click', () => {
+      const open = drawer.style.display === 'block';
+      drawer.style.display = open ? 'none' : 'block';
+      btn.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    });
+
+    // Close drawer when clicking a link
+    drawer?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        drawer.style.display = 'none';
+        btn.setAttribute('aria-label', 'Open menu');
+      });
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
