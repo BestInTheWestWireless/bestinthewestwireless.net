@@ -275,68 +275,57 @@
   </div>
 
   <script>
-    // Find the upcoming Saturday at 8:00 PM local time
-function getNextSaturday8PM() {
-  const now = new Date();
-  const target = new Date(now);
-  const day = now.getDay(); // 6 = Saturday
-  const daysUntilSaturday = (6 - day + 7) % 7;
+  // Find the upcoming Saturday at 8:00 PM local time
+  function getNextSaturday8PM() {
+    const now = new Date();
+    const target = new Date(now);
+    const day = now.getDay(); // 6 = Saturday
+    const daysUntilSaturday = (6 - day + 7) % 7;
 
-  target.setHours(20, 0, 0, 0); // 8:00 PM
+    target.setHours(20, 0, 0, 0); // 8:00 PM
 
-  if (daysUntilSaturday === 0 && now < target) {
-    return target; // Saturday before 8 PM
-  } else {
-    target.setDate(target.getDate() + (daysUntilSaturday === 0 ? 7 : daysUntilSaturday));
-    return target;
+    if (daysUntilSaturday === 0 && now < target) {
+      return target; // Saturday before 8 PM
+    } else {
+      target.setDate(
+        target.getDate() + (daysUntilSaturday === 0 ? 7 : daysUntilSaturday)
+      );
+      return target;
+    }
   }
-}
 
-// update references
-let end = getNextSaturday8PM();
+  const dEl = document.getElementById('d');
+  const hEl = document.getElementById('h');
+  const mEl = document.getElementById('m');
+  const sEl = document.getElementById('s');
 
-if (diff <= 0) {
-  end = getNextSaturday8PM();
-}
+  function pad(n) {
+    return String(n).padStart(2, '0');
+  }
 
+  let end = getNextSaturday8PM();
 
+  function tick() {
+    const now = new Date();
+    let diff = end - now;
 
-
-
-
-
-    const dEl = document.getElementById('d');
-    const hEl = document.getElementById('h');
-    const mEl = document.getElementById('m');
-    const sEl = document.getElementById('s');
-
-    function pad(n){ return String(n).padStart(2,'0'); }
-
-    let end = getNextSunday8PM();
-
-    function tick(){
-      const now = new Date();
-      let diff = end - now;
-
-      if (diff <= 0) {
-        end = getNextSunday8PM();
-        diff = end - now;
-      }
-
-      const totalSeconds = Math.floor(diff/1000);
-      const days = Math.floor(totalSeconds / (3600*24));
-      const hours = Math.floor((totalSeconds % (3600*24)) / 3600);
-      const mins = Math.floor((totalSeconds % 3600) / 60);
-      const secs = totalSeconds % 60;
-
-      dEl.textContent = pad(days);
-      hEl.textContent = pad(hours);
-      mEl.textContent = pad(mins);
-      sEl.textContent = pad(secs);
+    if (diff <= 0) {
+      end = getNextSaturday8PM();
+      diff = end - now;
     }
 
-    tick();
-    setInterval(tick, 1000);
-  </script>
-</body>
-</html>
+    const totalSeconds = Math.floor(diff / 1000);
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const mins = Math.floor((totalSeconds % 3600) / 60);
+    const secs = totalSeconds % 60;
+
+    dEl.textContent = pad(days);
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
