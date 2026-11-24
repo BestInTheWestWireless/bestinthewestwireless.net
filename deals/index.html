@@ -17,7 +17,11 @@
       line-height: 1.45;
     }
 
-    .shell { width: min(100%, 860px); margin: 0 auto; padding: 16px; }
+    .shell {
+      width: min(100%, 860px);
+      margin: 0 auto;
+      padding: 16px;
+    }
 
     .header {
       padding: 22px 12px;
@@ -28,8 +32,20 @@
       box-shadow: 0 18px 50px #0007;
     }
 
-    .headline { display: flex; align-items: center; justify-content: center; gap: 8px; }
-    h1 { margin: 0; font-size: clamp(1.5rem, 5vw, 2.6rem); line-height: 1.15; font-weight: 900; }
+    .headline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 5vw, 2.6rem);
+      line-height: 1.15;
+      font-weight: 900;
+    }
+
     .store { margin: 10px 0 0; font-size: 1rem; font-weight: 700; }
     .address { margin: 4px 0 0; color: #dedede; font-size: .9rem; }
 
@@ -47,11 +63,66 @@
       70% { transform: translateY(-2px) rotate(9deg); }
     }
 
+    .approval {
+      margin-top: 16px;
+      padding: 24px 16px;
+      border: 1px solid #f04444;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #390b0b, #160d0d);
+      text-align: center;
+    }
+
+    .approval h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 7vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .approval-products {
+      margin: 6px 0 12px;
+      font-size: clamp(1.1rem, 4vw, 1.55rem);
+      font-weight: 900;
+    }
+
+    .approval-offer { margin: 0; font-size: 1.1rem; }
+    .approval-offer strong { font-size: 1.35em; }
+    .approval-instruction { margin: 12px 0; color: #f4d8d8; }
+
+    .approval-buttons {
+      display: grid;
+      gap: 10px;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .approval-buttons a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 58px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #c00;
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .approval-buttons a:hover { background: #a80000; }
+
+    a:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
+    }
+
     .deals {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 340px));
+      grid-template-columns: minmax(0, 540px);
       justify-content: center;
-      align-items: start;
       gap: 12px;
       margin-top: 16px;
     }
@@ -73,7 +144,14 @@
       background: linear-gradient(90deg, #f00, #f003);
     }
 
-    .card img { display: block; width: 100%; height: auto; border-radius: 10px; }
+    .card a { display: block; border-radius: 10px; }
+
+    .card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
 
     .cta {
       position: fixed;
@@ -97,10 +175,6 @@
       font-weight: 900;
     }
 
-    @media (max-width: 560px) {
-      .deals { grid-template-columns: minmax(0, 340px); }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .popper { animation: none; }
     }
@@ -118,30 +192,67 @@
       <p class="address">3010 W Third St, Dayton</p>
     </header>
 
+    <section class="approval" aria-labelledby="approval-title">
+      <h2 id="approval-title">Get pre-approved</h2>
+      <p class="approval-products">For any phone, iPad, or laptop</p>
+      <p class="approval-offer">
+        Apply for <strong>$0 down</strong> on iPhones, iPads, or laptops.
+      </p>
+      <p class="approval-instruction">Tap a provider below to start your application.</p>
+
+      <div class="approval-buttons">
+        <a href="https://apply.acima.com/auth/v2/otp-start?app_id=lo&amp;location_guid=loca-8f782ee9-6746-4a32-9aa5-1d4f9d3d106c&amp;utm_campaign=dyn-acima-pop-mp-dashboard&amp;utm_medium=merchant&amp;utm_source=qr&amp;lang=en">
+          Apply with Acima <span aria-hidden="true">→</span>
+        </a>
+        <a href="https://www.progressive.com/">
+          Apply with Progressive <span aria-hidden="true">→</span>
+        </a>
+        <a href="https://payvan.me/4bZNPxg">
+          Apply with Payvantage <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
     <section class="deals" aria-label="Sale offers">
       <div class="card">
-        <a href="https://chilliswingsandrings.com/wp-content/uploads/2026/01/Copy-of-Best-Specials-Squares.png" aria-label="Open deal 1 at full size"><img src="https://chilliswingsandrings.com/wp-content/uploads/2026/01/Copy-of-Best-Specials-Squares.png" alt="Deal 1"></a>
+        <a href="https://chilliswingsandrings.com/wp-content/uploads/2026/01/Copy-of-Best-Specials-Squares.png" aria-label="Open deal 1 at full size">
+          <img src="https://chilliswingsandrings.com/wp-content/uploads/2026/01/Copy-of-Best-Specials-Squares.png" alt="Deal 1">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/h9fvTAY.png" aria-label="Open deal 2 at full size"><img src="https://i.imgur.com/h9fvTAY.png" alt="Deal 2"></a>
+        <a href="https://i.imgur.com/h9fvTAY.png" aria-label="Open deal 2 at full size">
+          <img src="https://i.imgur.com/h9fvTAY.png" alt="Deal 2">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/2JssdNV.png" aria-label="Open deal 3 at full size"><img src="https://i.imgur.com/2JssdNV.png" alt="Deal 3" loading="lazy"></a>
+        <a href="https://i.imgur.com/2JssdNV.png" aria-label="Open deal 3 at full size">
+          <img src="https://i.imgur.com/2JssdNV.png" alt="Deal 3" loading="lazy">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/Wdsg1gv.png" aria-label="Open deal 4 at full size"><img src="https://i.imgur.com/Wdsg1gv.png" alt="Deal 4" loading="lazy"></a>
+        <a href="https://i.imgur.com/Wdsg1gv.png" aria-label="Open deal 4 at full size">
+          <img src="https://i.imgur.com/Wdsg1gv.png" alt="Deal 4" loading="lazy">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/Q01Gg9T.png" aria-label="Open deal 5 at full size"><img src="https://i.imgur.com/Q01Gg9T.png" alt="Deal 5" loading="lazy"></a>
+        <a href="https://i.imgur.com/Q01Gg9T.png" aria-label="Open deal 5 at full size">
+          <img src="https://i.imgur.com/Q01Gg9T.png" alt="Deal 5" loading="lazy">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/qVTJj08.png" aria-label="Open deal 6 at full size"><img src="https://i.imgur.com/qVTJj08.png" alt="Deal 6" loading="lazy"></a>
+        <a href="https://i.imgur.com/qVTJj08.png" aria-label="Open deal 6 at full size">
+          <img src="https://i.imgur.com/qVTJj08.png" alt="Deal 6" loading="lazy">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/DqFkduv.png" aria-label="Open deal 7 at full size"><img src="https://i.imgur.com/DqFkduv.png" alt="Deal 7" loading="lazy"></a>
+        <a href="https://i.imgur.com/DqFkduv.png" aria-label="Open deal 7 at full size">
+          <img src="https://i.imgur.com/DqFkduv.png" alt="Deal 7" loading="lazy">
+        </a>
       </div>
       <div class="card">
-        <a href="https://i.imgur.com/N4qdrgy.png" aria-label="Open deal 8 at full size"><img src="https://i.imgur.com/N4qdrgy.png" alt="Deal 8" loading="lazy"></a>
+        <a href="https://i.imgur.com/N4qdrgy.png" aria-label="Open deal 8 at full size">
+          <img src="https://i.imgur.com/N4qdrgy.png" alt="Deal 8" loading="lazy">
+        </a>
       </div>
     </section>
   </main>
@@ -151,4 +262,3 @@
   </div>
 </body>
 </html>
-
